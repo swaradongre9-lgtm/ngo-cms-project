@@ -1,0 +1,4 @@
+[build] 
+  base = "frontend/ngo-client" 
+  publish = "build" 
+  command = "npm run build" 
