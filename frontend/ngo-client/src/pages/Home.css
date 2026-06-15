@@ -1,0 +1,45 @@
+.home-container {
+    overflow-x: hidden;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.stat-card {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.campaign-section {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.card {
+    transition: transform 0.3s ease;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-primary {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+}
+
+.btn-primary:hover {
+    background-color: #3498db;
+    border-color: #3498db;
+}
