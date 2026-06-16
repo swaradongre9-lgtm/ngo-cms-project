@@ -41,12 +41,12 @@ function Home() {
 
     return (
         <div className="home-container">
-            {/* ====== HERO BANNER WITH IMAGE ====== */}
-            <section className="hero-section d-flex align-items-center">
+            {/* ====== HERO BANNER ====== */}
+            <section className="hero-section">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-md-6 text-white">
-                            <h1 className="display-3 fw-bold">Making a Difference Together</h1>
+                            <h1 className="display-4 fw-bold">Making a Difference Together</h1>
                             <p className="lead mt-3">
                                 {visionMission?.mission_description || 'Empowering communities through education and healthcare'}
                             </p>
@@ -57,64 +57,41 @@ function Home() {
                         </div>
                         <div className="col-md-6 text-center">
                             <img 
-                                src="https://img.freepik.com/free-vector/children-holding-hands-around-globe_53876-61263.jpg" 
+                                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop" 
                                 alt="NGO Hero"
                                 className="img-fluid rounded-3 shadow-lg"
-                                style={{ maxHeight: '400px' }}
                             />
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ====== VISION & MISSION WITH IMAGES ====== */}
+            {/* ====== VISION & MISSION ====== */}
             <section className="vision-mission py-5">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 mb-4">
-                            <div className="card h-100 shadow-lg border-0 mission-card">
-                                <div className="card-body text-center p-4">
-                                    <img 
-                                        src="https://img.icons8.com/fluency/96/000000/mission-of-a-company.png" 
-                                        alt="Mission"
-                                        className="mb-3"
-                                    />
-                                    <h3 className="card-title text-primary">
-                                        {visionMission?.mission_title || 'Our Mission'}
-                                    </h3>
-                                    <p className="card-text">
-                                        {visionMission?.mission_description || 'Loading mission...'}
-                                    </p>
-                                </div>
+                            <div className="card h-100 shadow-sm border-0 text-center p-4">
+                                <h3 className="text-primary">{visionMission?.mission_title || 'Our Mission'}</h3>
+                                <p className="mt-3">{visionMission?.mission_description || 'Loading mission...'}</p>
                             </div>
                         </div>
                         <div className="col-md-6 mb-4">
-                            <div className="card h-100 shadow-lg border-0 vision-card">
-                                <div className="card-body text-center p-4">
-                                    <img 
-                                        src="https://img.icons8.com/fluency/96/000000/vision.png" 
-                                        alt="Vision"
-                                        className="mb-3"
-                                    />
-                                    <h3 className="card-title text-primary">
-                                        {visionMission?.vision_title || 'Our Vision'}
-                                    </h3>
-                                    <p className="card-text">
-                                        {visionMission?.vision_description || 'Loading vision...'}
-                                    </p>
-                                </div>
+                            <div className="card h-100 shadow-sm border-0 text-center p-4">
+                                <h3 className="text-primary">{visionMission?.vision_title || 'Our Vision'}</h3>
+                                <p className="mt-3">{visionMission?.vision_description || 'Loading vision...'}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ====== STATISTICS SECTION ====== */}
-            <section className="stats-section py-5">
+            {/* ====== STATISTICS ====== */}
+            <section className="stats-section py-5 bg-light">
                 <div className="container">
                     <h2 className="text-center mb-5 fw-bold">Our Impact</h2>
                     <div className="row text-center">
-                        {statistics.map((stat, index) => (
+                        {statistics.map((stat) => (
                             <div className="col-md-3 col-sm-6 mb-4" key={stat.id}>
                                 <div className="stat-card">
                                     <h2 className="display-4 fw-bold text-primary">{stat.value}</h2>
@@ -126,20 +103,14 @@ function Home() {
                 </div>
             </section>
 
-            {/* ====== INITIATIVES/PROGRAMS WITH IMAGES ====== */}
-            <section className="initiatives-section py-5 bg-light">
+            {/* ====== INITIATIVES ====== */}
+            <section className="initiatives-section py-5">
                 <div className="container">
                     <h2 className="text-center mb-5 fw-bold">Our Programs</h2>
                     <div className="row">
                         {initiatives.map((initiative) => (
                             <div className="col-md-4 mb-4" key={initiative.id}>
-                                <div className="card h-100 shadow-lg border-0 initiative-card">
-                                    <img 
-                                        src={initiative.image_url || "https://img.freepik.com/free-vector/education-concept-illustration_114360-1315.jpg"}
-                                        className="card-img-top" 
-                                        alt={initiative.title}
-                                        style={{ height: '220px', objectFit: 'cover' }}
-                                    />
+                                <div className="card h-100 shadow-sm border-0">
                                     <div className="card-body">
                                         <h4 className="card-title text-primary">{initiative.title}</h4>
                                         <p className="card-text">{initiative.description}</p>
@@ -152,47 +123,14 @@ function Home() {
                 </div>
             </section>
 
-            {/* ====== CALL TO ACTION WITH IMAGE ====== */}
-            <section className="cta-section py-5">
+            {/* ====== CALL TO ACTION ====== */}
+            <section className="cta-section py-5 text-white text-center">
                 <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-md-6 text-white">
-                            <h2>Join Us in Making a Difference</h2>
-                            <p className="lead mt-3">Your support can change lives. Donate, volunteer, or partner with us.</p>
-                            <div className="mt-4">
-                                <button className="btn btn-light btn-lg me-3">Donate Now</button>
-                                <button className="btn btn-outline-light btn-lg">Volunteer</button>
-                            </div>
-                        </div>
-                        <div className="col-md-6 text-center">
-                            <img 
-                                src="https://img.freepik.com/free-vector/volunteers-planting-trees_53876-68500.jpg" 
-                                alt="Volunteers"
-                                className="img-fluid rounded-3 shadow-lg"
-                                style={{ maxHeight: '300px' }}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ====== PARTNERS SECTION ====== */}
-            <section className="partners-section py-5">
-                <div className="container text-center">
-                    <h2 className="mb-5 fw-bold">Our Partners</h2>
-                    <div className="row justify-content-center align-items-center">
-                        <div className="col-3 col-md-2">
-                            <img src="https://img.icons8.com/color/80/000000/google-logo.png" alt="Google" className="img-fluid" />
-                        </div>
-                        <div className="col-3 col-md-2">
-                            <img src="https://img.icons8.com/color/80/000000/microsoft.png" alt="Microsoft" className="img-fluid" />
-                        </div>
-                        <div className="col-3 col-md-2">
-                            <img src="https://img.icons8.com/color/80/000000/amazon.png" alt="Amazon" className="img-fluid" />
-                        </div>
-                        <div className="col-3 col-md-2">
-                            <img src="https://img.icons8.com/color/80/000000/facebook.png" alt="Facebook" className="img-fluid" />
-                        </div>
+                    <h2>Join Us in Making a Difference</h2>
+                    <p className="lead mt-3">Your support can change lives</p>
+                    <div className="mt-4">
+                        <button className="btn btn-light btn-lg me-3">Donate Now</button>
+                        <button className="btn btn-outline-light btn-lg">Volunteer</button>
                     </div>
                 </div>
             </section>
@@ -203,11 +141,11 @@ function Home() {
                     <div className="row">
                         <div className="col-md-4">
                             <h5>NGO CMS</h5>
-                            <p>Empowering communities through education, healthcare, and livelihood programs.</p>
+                            <p className="small">Empowering communities through education, healthcare, and livelihood programs.</p>
                         </div>
                         <div className="col-md-4">
                             <h5>Quick Links</h5>
-                            <ul className="list-unstyled">
+                            <ul className="list-unstyled small">
                                 <li><a href="/" className="text-white text-decoration-none">Home</a></li>
                                 <li><a href="/about" className="text-white text-decoration-none">About Us</a></li>
                                 <li><a href="/login" className="text-white text-decoration-none">Login</a></li>
@@ -215,15 +153,9 @@ function Home() {
                             </ul>
                         </div>
                         <div className="col-md-4">
-                            <h5>Contact Us</h5>
-                            <p>Email: info@ngo.com</p>
-                            <p>Phone: +91 98765 43210</p>
-                            <div className="social-icons">
-                                <img src="https://img.icons8.com/color/30/000000/facebook.png" alt="FB" className="me-2" />
-                                <img src="https://img.icons8.com/color/30/000000/twitter.png" alt="Twitter" className="me-2" />
-                                <img src="https://img.icons8.com/color/30/000000/linkedin.png" alt="LinkedIn" className="me-2" />
-                                <img src="https://img.icons8.com/color/30/000000/instagram-new.png" alt="Instagram" />
-                            </div>
+                            <h5>Contact</h5>
+                            <p className="small">Email: info@ngo.com</p>
+                            <p className="small">Phone: +91 98765 43210</p>
                         </div>
                     </div>
                     <div className="text-center mt-3 pt-3 border-top border-secondary">

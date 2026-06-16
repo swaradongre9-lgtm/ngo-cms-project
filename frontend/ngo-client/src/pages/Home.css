@@ -5,58 +5,43 @@
 /* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-    min-height: 500px;
     padding: 80px 0;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
 }
 
-/* Cards */
-.mission-card, .vision-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.hero-section img {
+    max-height: 350px;
+    width: 100%;
+    object-fit: cover;
 }
 
-.mission-card:hover, .vision-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-/* Statistics */
+/* Stats */
 .stat-card {
-    padding: 25px;
+    padding: 20px;
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-/* Initiatives */
-.initiative-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     transition: transform 0.3s ease;
 }
 
-.initiative-card:hover {
-    transform: translateY(-8px);
+.stat-card:hover {
+    transform: translateY(-5px);
 }
 
-/* CTA Section */
+/* CTA */
 .cta-section {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-    padding: 80px 0;
 }
 
-/* Partners */
-.partners-section img {
-    filter: grayscale(100%);
-    transition: filter 0.3s ease, transform 0.3s ease;
+/* Cards */
+.card {
+    transition: transform 0.3s ease;
 }
 
-.partners-section img:hover {
-    filter: grayscale(0);
-    transform: scale(1.1);
+.card:hover {
+    transform: translateY(-5px);
 }
 
 /* Footer */
@@ -66,32 +51,15 @@
 
 .footer-section a:hover {
     color: #3498db !important;
-    text-decoration: underline !important;
 }
 
-.social-icons img {
-    transition: transform 0.3s ease;
-}
-
-.social-icons img:hover {
-    transform: scale(1.2);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
     .hero-section {
-        min-height: 400px;
-        padding: 40px 0;
         text-align: center;
+        padding: 40px 0;
     }
     
     .hero-section .col-md-6:last-child {
         display: none;
     }
-}
-
-/* Loading Spinner */
-.spinner-border {
-    width: 3rem;
-    height: 3rem;
 }
