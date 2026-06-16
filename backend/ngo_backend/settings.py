@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',  # ← ADD THIS
+    'corsheaders',
     'rest_framework_simplejwt',
     'accounts',
+    'home',  
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +151,4 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+AUTH_USER_MODEL = 'accounts.User'

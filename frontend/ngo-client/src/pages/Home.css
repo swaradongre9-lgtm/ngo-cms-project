@@ -21,13 +21,13 @@
     transform: translateY(-5px);
 }
 
-.campaign-section {
-    background: linear-gradient(135deg, #f39c12, #e67e22);
+.cta-section {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
 }
 
 .card {
-    transition: transform 0.3s ease;
     border: none;
+    transition: transform 0.3s ease;
 }
 
 .card:hover {

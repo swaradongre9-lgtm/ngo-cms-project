@@ -1,42 +1,83 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Home.css';
 
 function Home() {
+    const [visionMission, setVisionMission] = useState(null);
+    const [statistics, setStatistics] = useState([]);
+    const [initiatives, setInitiatives] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    // Fetch data from APIs
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [visionRes, statsRes, initiativesRes] = await Promise.all([
+                    axios.get('http://127.0.0.1:8000/api/home/vision-mission/'),
+                    axios.get('http://127.0.0.1:8000/api/home/statistics/'),
+                    axios.get('http://127.0.0.1:8000/api/home/initiatives/')
+                ]);
+                
+                setVisionMission(visionRes.data[0]);
+                setStatistics(statsRes.data);
+                setInitiatives(initiativesRes.data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="text-center mt-5">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+                <p>Loading content...</p>
+            </div>
+        );
+    }
+
     return (
         <div className="home-container">
-            {/* Hero Section */}
-            <section className="hero-section bg-primary text-white text-center py-5">
+            {/* Hero Banner Section */}
+            <section className="hero-section text-white text-center py-5">
                 <div className="container">
-                    <h1 className="display-4 fw-bold">Making a Difference Together</h1>
+                    <h1 className="display-3 fw-bold">Making a Difference Together</h1>
                     <p className="lead mt-3">
-                        We are committed to creating lasting impact in the lives of underprivileged children and communities
+                        {visionMission?.mission_description || 'Empowering communities through education and healthcare'}
                     </p>
                     <button className="btn btn-light btn-lg mt-3">Donate Now</button>
                 </div>
             </section>
 
-            {/* Mission & Vision Section */}
-            <section className="mission-vision py-5">
+            {/* Vision & Mission Section */}
+            <section className="vision-mission py-5">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 mb-4">
-                            <div className="card h-100 shadow-sm">
+                            <div className="card h-100 shadow-sm border-0">
                                 <div className="card-body text-center p-4">
-                                    <h3 className="card-title text-primary">Our Mission</h3>
+                                    <h3 className="card-title text-primary">
+                                        {visionMission?.mission_title || 'Our Mission'}
+                                    </h3>
                                     <p className="card-text">
-                                        To create a lasting impact in the lives of underprivileged children and communities 
-                                        by providing education, woman empowerment, and livelihood opportunities.
+                                        {visionMission?.mission_description || 'Loading mission...'}
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-6 mb-4">
-                            <div className="card h-100 shadow-sm">
+                            <div className="card h-100 shadow-sm border-0">
                                 <div className="card-body text-center p-4">
-                                    <h3 className="card-title text-primary">Our Vision</h3>
+                                    <h3 className="card-title text-primary">
+                                        {visionMission?.vision_title || 'Our Vision'}
+                                    </h3>
                                     <p className="card-text">
-                                        A world where every child has access to quality education, healthcare, 
-                                        and the opportunity to achieve their full potential.
+                                        {visionMission?.vision_description || 'Loading vision...'}
                                     </p>
                                 </div>
                             </div>
@@ -45,122 +86,59 @@ function Home() {
                 </div>
             </section>
 
-            {/* Impact Statistics Section */}
+            {/* Statistics Section */}
             <section className="stats-section bg-light py-5">
                 <div className="container">
                     <h2 className="text-center mb-5">Our Impact</h2>
                     <div className="row text-center">
-                        <div className="col-md-3 col-sm-6 mb-4">
-                            <div className="stat-card">
-                                <h2 className="display-4 fw-bold text-primary">10,000+</h2>
-                                <p className="mb-0">Children Educated</p>
+                        {statistics.map((stat, index) => (
+                            <div className="col-md-3 col-sm-6 mb-4" key={stat.id}>
+                                <div className="stat-card">
+                                    <h2 className="display-4 fw-bold text-primary">{stat.value}</h2>
+                                    <p className="mb-0">{stat.label}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 mb-4">
-                            <div className="stat-card">
-                                <h2 className="display-4 fw-bold text-primary">500+</h2>
-                                <p className="mb-0">Women Empowered</p>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 mb-4">
-                            <div className="stat-card">
-                                <h2 className="display-4 fw-bold text-primary">50+</h2>
-                                <p className="mb-0">Communities Served</p>
-                            </div>
-                        </div>
-                        <div className="col-md-3 col-sm-6 mb-4">
-                            <div className="stat-card">
-                                <h2 className="display-4 fw-bold text-primary">1000+</h2>
-                                <p className="mb-0">Volunteers</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Featured Programs Section */}
-            <section className="programs-section py-5">
+            {/* Initiatives Section */}
+            <section className="initiatives-section py-5">
                 <div className="container">
-                    <h2 className="text-center mb-5">Our Featured Programs</h2>
+                    <h2 className="text-center mb-5">Our Programs</h2>
                     <div className="row">
-                        <div className="col-md-4 mb-4">
-                            <div className="card h-100 shadow-sm">
-                                <div className="card-body">
-                                    <h4 className="card-title text-primary">Education Program</h4>
-                                    <p className="card-text">
-                                        Providing quality education to underprivileged children through schools, 
-                                        learning centers, and scholarship programs.
-                                    </p>
-                                    <button className="btn btn-outline-primary btn-sm">Learn More</button>
+                        {initiatives.map((initiative) => (
+                            <div className="col-md-4 mb-4" key={initiative.id}>
+                                <div className="card h-100 shadow-sm border-0">
+                                    {initiative.image_url && (
+                                        <img 
+                                            src={initiative.image_url} 
+                                            className="card-img-top" 
+                                            alt={initiative.title}
+                                            style={{ height: '200px', objectFit: 'cover' }}
+                                        />
+                                    )}
+                                    <div className="card-body">
+                                        <h4 className="card-title text-primary">{initiative.title}</h4>
+                                        <p className="card-text">{initiative.description}</p>
+                                        <button className="btn btn-outline-primary btn-sm">Learn More</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-md-4 mb-4">
-                            <div className="card h-100 shadow-sm">
-                                <div className="card-body">
-                                    <h4 className="card-title text-primary">Healthcare Initiative</h4>
-                                    <p className="card-text">
-                                        Health camps, mobile health units, and community-based health interventions 
-                                        for marginalized communities.
-                                    </p>
-                                    <button className="btn btn-outline-primary btn-sm">Learn More</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-4">
-                            <div className="card h-100 shadow-sm">
-                                <div className="card-body">
-                                    <h4 className="card-title text-primary">Livelihood Program</h4>
-                                    <p className="card-text">
-                                        Vocational training and livelihood generation programs for 
-                                        marginalized communities.
-                                    </p>
-                                    <button className="btn btn-outline-primary btn-sm">Learn More</button>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Featured Campaign Section */}
-            <section className="campaign-section bg-warning text-dark py-5">
-                <div className="container text-center">
-                    <h2>Support Our Current Campaign</h2>
-                    <p className="lead mt-3">
-                        Help us provide education to 1000 children this year
-                    </p>
-                    <button className="btn btn-dark btn-lg mt-3">Support Now</button>
-                </div>
-            </section>
-
-            {/* Success Stories Section */}
-            <section className="stories-section py-5">
+            {/* Call to Action Section */}
+            <section className="cta-section bg-primary text-white text-center py-5">
                 <div className="container">
-                    <h2 className="text-center mb-5">Success Stories</h2>
-                    <div className="row">
-                        <div className="col-md-6 mb-4">
-                            <div className="card shadow-sm">
-                                <div className="card-body">
-                                    <p className="card-text fst-italic">
-                                        "Thanks to the education program, I am now the first graduate in my family. 
-                                        This NGO changed my life forever."
-                                    </p>
-                                    <h5 className="mt-3">- Priya, Student</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                            <div className="card shadow-sm">
-                                <div className="card-body">
-                                    <p className="card-text fst-italic">
-                                        "The vocational training helped me start my own small business. 
-                                        I can now support my family."
-                                    </p>
-                                    <h5 className="mt-3">- Ramesh, Entrepreneur</h5>
-                                </div>
-                            </div>
-                        </div>
+                    <h2>Join Us in Making a Difference</h2>
+                    <p className="lead mt-3">Your support can change lives</p>
+                    <div className="mt-4">
+                        <button className="btn btn-light btn-lg me-3">Donate Now</button>
+                        <button className="btn btn-outline-light btn-lg">Volunteer</button>
                     </div>
                 </div>
             </section>
