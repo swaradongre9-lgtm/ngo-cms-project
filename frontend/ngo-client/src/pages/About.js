@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './About.css';
-
+import { API_BASE_URL } from '../config';
 function About() {
     const [ourStory, setOurStory] = useState(null);
     const [coreValues, setCoreValues] = useState([]);
