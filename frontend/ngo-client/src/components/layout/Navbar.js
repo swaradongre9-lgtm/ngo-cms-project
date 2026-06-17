@@ -13,58 +13,37 @@ function Navbar() {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
             <div className="container">
-                <Link className="navbar-brand fw-bold" to="/">
-                    NGO CMS
+                <Link className="navbar-brand fw-bold fs-2" to="/">
+                    ❤️ NGO CMS
                 </Link>
+
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span className="navbar-toggler-icon"></span>
                 </button>
+
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Home</Link>
+                            <Link className="nav-link fw-semibold" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/about">About Us</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/our-work">Our Work</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/projects">Projects</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/media">Media</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/get-involved">Get Involved</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/blog">Blog</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/contact">Contact</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link btn btn-danger text-white px-3 mx-2" to="/donate">
-                                Donate
-                            </Link>
+                            <Link className="nav-link fw-semibold" to="/about">About Us</Link>
                         </li>
                         {isLoggedIn ? (
                             <li className="nav-item">
-                                <button className="nav-link btn btn-link text-white" onClick={handleLogout}>
+                                <button className="nav-link btn btn-link text-white fw-semibold" onClick={handleLogout}>
                                     Logout
                                 </button>
                             </li>
                         ) : (
                             <>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/login">Login</Link>
+                                    <Link className="nav-link fw-semibold" to="/login">Login</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link btn btn-success text-white px-3" to="/register">
+                                    <Link className="nav-link btn btn-success text-white px-3 fw-semibold" to="/register">
                                         Register
                                     </Link>
                                 </li>

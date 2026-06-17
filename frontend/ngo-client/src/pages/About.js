@@ -37,7 +37,7 @@ function About() {
                 <div className="spinner-border text-primary" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div>
-                <p>Loading about us...</p>
+                <p className="mt-2">Loading About Us...</p>
             </div>
         );
     }
@@ -55,17 +55,14 @@ function About() {
             {/* ====== OUR STORY ====== */}
             <section className="our-story py-5">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <h2 className="mb-4">Our Story</h2>
-                            <p className="lead">{ourStory?.content || 'Loading story...'}</p>
-                        </div>
-                        <div className="col-md-6 text-center">
-                            <img 
-                                src="https://img.icons8.com/fluency/200/000000/storytelling.png"
-                                alt="Our Story"
-                                className="img-fluid"
-                            />
+                    <div className="row justify-content-center">
+                        <div className="col-md-10">
+                            <div className="story-card">
+                                <h2 className="text-center mb-4">Our Story</h2>
+                                <p className="lead text-center">
+                                    {ourStory?.content || 'Loading story...'}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,7 +72,7 @@ function About() {
             <section className="core-values py-5 bg-light">
                 <div className="container">
                     <h2 className="text-center mb-5">Our Core Values</h2>
-                    <div className="row">
+                    <div className="row justify-content-center">
                         {coreValues.map((value) => (
                             <div className="col-md-3 col-sm-6 mb-4" key={value.id}>
                                 <div className="value-card text-center">
@@ -95,10 +92,8 @@ function About() {
                         {programs.map((program) => (
                             <div className="col-md-4 mb-4" key={program.id}>
                                 <div className="program-card">
-                                    <div className="card-body">
-                                        <h4>{program.name}</h4>
-                                        <p>{program.description}</p>
-                                    </div>
+                                    <h4 className="text-primary">{program.name}</h4>
+                                    <p>{program.description}</p>
                                 </div>
                             </div>
                         ))}
@@ -110,16 +105,10 @@ function About() {
             <section className="team py-5 bg-light">
                 <div className="container">
                     <h2 className="text-center mb-5">Meet Our Team</h2>
-                    <div className="row">
+                    <div className="row justify-content-center">
                         {teamMembers.map((member) => (
                             <div className="col-md-4 mb-4" key={member.id}>
                                 <div className="team-card text-center">
-                                    <img 
-                                        src={member.image_url || "https://img.icons8.com/fluency/96/000000/user-male-circle.png"}
-                                        alt={member.name}
-                                        className="rounded-circle mb-3"
-                                        style={{ width: '120px', height: '120px', objectFit: 'cover' }}
-                                    />
                                     <h4>{member.name}</h4>
                                     <p className="text-muted">{member.role}</p>
                                     <p>{member.bio}</p>
