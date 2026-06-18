@@ -9,7 +9,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 
-
 function App() {
     return (
         <Router>
@@ -18,9 +17,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/projects" element={<Projects />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/projects" element={<Projects />} />cd C:\Users\dell\OneDrive\Desktop\ngo-cms-project
                 </Routes>
             </div>
         </Router>

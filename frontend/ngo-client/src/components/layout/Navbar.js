@@ -31,6 +31,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link fw-semibold" to="/about">About Us</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link fw-semibold" to="/projects">Projects</Link>
+                        </li>
                         {isLoggedIn ? (
                             <li className="nav-item">
                                 <button className="nav-link btn btn-link text-white fw-semibold" onClick={handleLogout}>
