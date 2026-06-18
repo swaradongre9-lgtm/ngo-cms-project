@@ -5,5 +5,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('accounts.urls')),
     path('api/home/', include('home.urls')),
-    path('api/aboutus/', include('aboutus.urls')),  # ← ADD THIS
+    path('api/aboutus/', include('aboutus.urls')),  
+    path('api/projects/', include('projects.urls')),# ← ADD THIS
 ]

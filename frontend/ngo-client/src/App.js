@@ -7,6 +7,8 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Home from './pages/Home';
 import About from './pages/About';
+import Projects from './pages/Projects';
+
 
 function App() {
     return (
@@ -18,6 +20,7 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/projects" element={<Projects />} />cd C:\Users\dell\OneDrive\Desktop\ngo-cms-project
                 </Routes>
             </div>
         </Router>
