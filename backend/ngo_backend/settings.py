@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'dashboard',
     'aboutus',
     'projects',
+    'media', 
 ]
 
 MIDDLEWARE = [

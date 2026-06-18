@@ -29,6 +29,9 @@ function Navbar() {
                             <Link className="nav-link fw-semibold" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
+                             <Link className="nav-link fw-semibold" to="/media">Media</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link fw-semibold" to="/about">About Us</Link>
                         </li>
                         <li className="nav-item">

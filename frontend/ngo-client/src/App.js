@@ -8,6 +8,7 @@ import Register from './components/auth/Register';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
+import Media from './pages/Media';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/media" element={<Media />} />
                 </Routes>
             </div>
         </Router>
